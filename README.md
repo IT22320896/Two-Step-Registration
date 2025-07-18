@@ -28,3 +28,11 @@ A modern, responsive two-step user registration form built with **React** and **
 4. **Run the development server**
    ```bash
    npm run dev
+
+
+## 🔍 Features  
+
+- Two-step form with progress tracking  
+- Client-side validation  
+- ⚠️ **Mocked backend**: Simulates API calls (no real connection)  
+- Responsive Tailwind CSS design  
