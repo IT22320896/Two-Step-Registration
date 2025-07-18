@@ -1,3 +1,5 @@
+import { Button } from "../components/Button";
+
 export default function Step2({
   data,
   errors,
@@ -46,24 +48,25 @@ export default function Step2({
       </label>
 
       <div className="flex justify-between">
-        <button
+        <Button
           onClick={onBack}
-          className="px-4 py-2 border rounded hover:bg-gray-100"
-          type="button"
+          className={"px-4 py-2 border rounded hover:bg-gray-100"}
         >
           Back
-        </button>
-        <button
+        </Button>
+
+        <Button
           onClick={onSubmit}
-          disabled={!isValid || loading}
+          disabled={!isValid}
+          loading={loading}
           className={`px-4 py-2 rounded text-white ${
             isValid
               ? "bg-green-600 hover:bg-green-700"
               : "bg-gray-400 cursor-not-allowed"
           }`}
         >
-          {loading ? "Submitting..." : "Submit"}
-        </button>
+          Submit
+        </Button>
       </div>
     </div>
   );

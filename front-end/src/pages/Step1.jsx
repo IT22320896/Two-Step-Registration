@@ -1,3 +1,5 @@
+import { Button } from "../components/Button";
+
 export default function Step1({ data, errors, onChange, onNext }) {
   const isValid =
     data.fullName.trim() !== "" && /\S+@\S+\.\S+/.test(data.email);
@@ -49,7 +51,7 @@ export default function Step1({ data, errors, onChange, onNext }) {
         />
       </label>
 
-      <button
+      <Button
         onClick={onNext}
         disabled={!isValid}
         className={`w-full py-2 rounded text-white ${
@@ -59,7 +61,7 @@ export default function Step1({ data, errors, onChange, onNext }) {
         }`}
       >
         Next
-      </button>
+      </Button>
     </div>
   );
 }
