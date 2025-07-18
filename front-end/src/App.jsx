@@ -2,6 +2,7 @@ import { useState } from "react";
 import ProgressBar from "./components/ProgressBar";
 import Step1 from "./pages/Step1";
 import Step2 from "./pages/Step2";
+import Success from "./components/Success";
 
 export default function App() {
   const [step, setStep] = useState(1);
@@ -44,6 +45,41 @@ export default function App() {
     else setErrors(errs);
   };
 
+  const handleSubmit = async () => {
+    const errs = validateStep2();
+    if (Object.keys(errs).length !== 0) {
+      setErrors(errs);
+      return;
+    }
+
+    setLoading(true);
+    try {
+      //const res = await fetch(
+      //  `${import.meta.env.VITE_API_BASE_URL}/api/register`,
+      // {
+      //   method: "POST",
+      //   headers: { "Content-Type": "application/json" },
+      //   body: JSON.stringify({
+      //    fullName: data.fullName,
+      //     email: data.email,
+      //    phone: data.phone,
+      //    password: data.password,
+      //   }),
+      // }
+      //);
+      //if (!res.ok) throw new Error("Failed to register");
+
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+      setSubmitted(true);
+    } catch {
+      alert("Registration failed. Try again.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  if (submitted) return <Success />;
+
   return (
     <div className="max-w-md mx-auto p-6 bg-white rounded shadow mt-10">
       <ProgressBar step={step} total={2} />
@@ -61,6 +97,7 @@ export default function App() {
           errors={errors}
           onChange={handleChange}
           onBack={() => setStep(1)}
+          onSubmit={handleSubmit}
           loading={loading}
         />
       )}

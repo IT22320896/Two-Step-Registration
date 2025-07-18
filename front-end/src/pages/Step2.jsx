@@ -54,6 +54,7 @@ export default function Step2({
           Back
         </button>
         <button
+          onClick={onSubmit}
           disabled={!isValid || loading}
           className={`px-4 py-2 rounded text-white ${
             isValid
