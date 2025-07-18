@@ -9,8 +9,7 @@ export default function Step2({
   onSubmit,
   loading,
 }) {
-  const isValid =
-    data.password.length >= 6 && data.confirmPassword === data.password;
+  const isValid = data.password.length >= 6;
 
   return (
     <div>
