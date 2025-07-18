@@ -1,6 +1,7 @@
 import { useState } from "react";
 import ProgressBar from "./components/ProgressBar";
 import Step1 from "./pages/Step1";
+import Step2 from "./pages/Step2";
 
 export default function App() {
   const [step, setStep] = useState(1);
@@ -20,6 +21,15 @@ export default function App() {
     if (!data.fullName.trim()) errs.fullName = "Full Name required";
     if (!data.email.trim()) errs.email = "Email required";
     else if (!/\S+@\S+\.\S+/.test(data.email)) errs.email = "Email invalid";
+    return errs;
+  };
+
+  const validateStep2 = () => {
+    const errs = {};
+    if (!data.password) errs.password = "Password required";
+    else if (data.password.length < 6) errs.password = "Min 6 characters";
+    if (data.confirmPassword !== data.password)
+      errs.confirmPassword = "Passwords must match";
     return errs;
   };
 
@@ -43,6 +53,15 @@ export default function App() {
           errors={errors}
           onChange={handleChange}
           onNext={handleNext}
+        />
+      )}
+      {step === 2 && (
+        <Step2
+          data={data}
+          errors={errors}
+          onChange={handleChange}
+          onBack={() => setStep(1)}
+          loading={loading}
         />
       )}
     </div>
