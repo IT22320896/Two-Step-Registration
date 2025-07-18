@@ -1,4 +1,5 @@
 import { Button } from "../components/Button";
+import InputField from "../components/InputField";
 
 export default function Step2({
   data,
@@ -15,37 +16,25 @@ export default function Step2({
     <div>
       <h2 className="text-xl font-semibold mb-4">Security</h2>
 
-      <label className="block mb-3">
-        Password *
-        <input
-          name="password"
-          type="password"
-          value={data.password}
-          onChange={onChange}
-          className={`w-full p-2 border rounded ${
-            errors.password ? "border-red-500" : "border-gray-300"
-          }`}
-        />
-        {errors.password && (
-          <p className="text-red-600 text-sm mt-1">{errors.password}</p>
-        )}
-      </label>
+      <InputField
+        label="Password"
+        name="password"
+        type="password"
+        value={data.password}
+        onChange={onChange}
+        error={errors.password}
+        required
+      />
 
-      <label className="block mb-5">
-        Confirm Password *
-        <input
-          name="confirmPassword"
-          type="password"
-          value={data.confirmPassword}
-          onChange={onChange}
-          className={`w-full p-2 border rounded ${
-            errors.confirmPassword ? "border-red-500" : "border-gray-300"
-          }`}
-        />
-        {errors.confirmPassword && (
-          <p className="text-red-600 text-sm mt-1">{errors.confirmPassword}</p>
-        )}
-      </label>
+      <InputField
+        label="Confirm Password"
+        name="confirmPassword"
+        type="password"
+        value={data.confirmPassword}
+        onChange={onChange}
+        error={errors.confirmPassword}
+        required
+      />
 
       <div className="flex justify-between">
         <Button
