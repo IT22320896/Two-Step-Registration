@@ -13,7 +13,7 @@ export default function App() {
     password: "",
     confirmPassword: "",
   });
-  const [errors, setErrors] = useState(false);
+  const [errors, setErrors] = useState({});
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
 
